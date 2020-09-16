@@ -7,7 +7,7 @@ function App() {
     const { NameModel } = store;
     return useObserver(() => (
         <>
-            <div>Widget3</div>
+            <div>---------Widget3---------</div>
             <div>{NameModel.age}</div>
         </>
         
