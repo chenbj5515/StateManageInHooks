@@ -143,7 +143,7 @@ module.exports = function(webpackEnv) {
       isEnvDevelopment &&
         require.resolve('react-dev-utils/webpackHotDevClient'),
       // you can choose useContext/unstated-next/mobx
-      './src/mobx/index.js'
+      './src/redux/index.js'
     ].filter(Boolean),
     output: {
       // The build folder.

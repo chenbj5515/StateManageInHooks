@@ -5,14 +5,17 @@ import Child from './Child';
 
 function App() {
     const { CounterModel } = store;
-    return useObserver(() => (
+    return (
         <>
-            <div>---------Widget1---------</div>
-            <div>{CounterModel.count}</div>
+            {useObserver(() => (
+                <>
+                    <div>---------Widget1---------</div>
+                    <div>{CounterModel.count}</div>
+                </>
+            ))}
             <Child />
         </>
-        
-    ));
+    )
 }
 
 export default App;
