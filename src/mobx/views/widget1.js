@@ -1,7 +1,6 @@
 import React from 'react';
 import store from "../models";
 import { useObserver } from "mobx-react";
-import Child from './Child';
 
 function App() {
     const { CounterModel } = store;
@@ -13,7 +12,6 @@ function App() {
                     <div>{CounterModel.count}</div>
                 </>
             ))}
-            <Child />
         </>
     )
 }

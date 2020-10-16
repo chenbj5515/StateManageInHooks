@@ -142,8 +142,8 @@ module.exports = function(webpackEnv) {
     entry: [
       isEnvDevelopment &&
         require.resolve('react-dev-utils/webpackHotDevClient'),
-      // you can choose useContext/unstated-next/mobx
-      './src/redux/index.js'
+      // 在这里输入想要看的Demo的入口目录
+      './src/asyncAction/index.js'
     ].filter(Boolean),
     output: {
       // The build folder.

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实现部分
+        let currentObserver = null;
+        const observers = [];
+        function autorun(fn) {
+            currentObserver = fn;
+            fn();
+        }
+        function reaction(fn) {
+            observers.push(fn);
+        }
+        function observable(state) {
+            const handler = {
+                get(target, key, receiver) {
+                    if (currentObserver) {
+                        reaction(currentObserver)
+                        currentObserver = null;
+                    }
+                    return Reflect.get(target, key, receiver)
+                },
+                set(target, key, value, receiver) {
+                    setTimeout(() => {
+                        observers.forEach(listener => {
+                            listener();
+                        })
+                    })
+                    return Reflect.set(target, key, value, receiver)
+                }
+            }
+            // 返回state的代理，这个代理劫持了state被get和set的操作，并可以进行一些处理。
+            return new Proxy(state, handler)
+        }
+
+        // 使用部分
+        let obj = observable({
+            name: 'chenbj',
+            age: 23
+        })
+        autorun(() => {console.log(`age改变了，当前值为${obj.age}`);})
+        window.obj = obj;
+    </script>
+</body>
+</html>

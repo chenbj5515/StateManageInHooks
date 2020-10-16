@@ -1,10 +1,9 @@
 import React from 'react';
 import Widget1 from './views/widget1';
 import Widget2 from './views/widget2';
-import Widget3 from './views/Child'
+import Widget3 from './views/widget3';
 
 function App() {
-  console.log("root rerender");
   return (
     <>
       <Widget1 />
